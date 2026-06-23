@@ -23,16 +23,15 @@ interface BadgeProps {
 export function Badge({ label, variant, dot, className }: BadgeProps) {
   return (
     <span className={cn('inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium ring-1 ring-inset', variants[variant], className)}>
-      {dot && <span className={cn('w-1.5 h-1.5 rounded-full', {
-        'bg-emerald-500': variant === 'green',
-        'bg-red-500': variant === 'red',
-        'bg-amber-500': variant === 'yellow',
-        'bg-blue-500': variant === 'blue',
-        'bg-purple-500': variant === 'purple',
-        'bg-slate-400': variant === 'gray',
-        'bg-orange-500': variant === 'orange',
-        'bg-teal-500': variant === 'teal',
-      })} />}
+      {dot && <span className={cn('w-1.5 h-1.5 rounded-full',
+        variant === 'green' ? 'bg-emerald-500' :
+        variant === 'red' ? 'bg-red-500' :
+        variant === 'yellow' ? 'bg-amber-500' :
+        variant === 'blue' ? 'bg-blue-500' :
+        variant === 'purple' ? 'bg-purple-500' :
+        variant === 'orange' ? 'bg-orange-500' :
+        variant === 'teal' ? 'bg-teal-500' : 'bg-slate-400'
+      )} />}
       {label}
     </span>
   );

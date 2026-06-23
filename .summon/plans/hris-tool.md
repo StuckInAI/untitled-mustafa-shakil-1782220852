@@ -1,5 +1,5 @@
 ---
-status: pending
+status: implemented
 title: HRIS Internal Tool — Full Suite
 ---
 
