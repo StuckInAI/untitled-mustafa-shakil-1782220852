@@ -1,14 +1,16 @@
 import { NavLink } from 'react-router-dom';
 import { cn } from '@/lib/utils';
+import { useAuth } from '@/contexts/AuthContext';
 import {
   LayoutDashboard, Users, CalendarDays, TrendingUp,
   GraduationCap, Shield, FileText, DollarSign,
-  BarChart3, Settings, ChevronRight
+  BarChart3, Settings, ChevronRight, UserSearch, LogOut
 } from 'lucide-react';
 
 const nav = [
   { label: 'Dashboard', to: '/', icon: LayoutDashboard },
   { label: 'Employees', to: '/employees', icon: Users },
+  { label: 'Recruitment', to: '/recruitment', icon: UserSearch },
   { label: 'Leave', to: '/leave', icon: CalendarDays },
   { label: 'Performance', to: '/performance', icon: TrendingUp },
   { label: 'Training', to: '/training', icon: GraduationCap },
@@ -19,6 +21,7 @@ const nav = [
 ];
 
 export function Sidebar() {
+  const { user, logout } = useAuth();
   return (
     <aside className="w-64 min-h-screen bg-slate-900 flex flex-col flex-shrink-0">
       {/* Logo */}
@@ -73,12 +76,21 @@ export function Sidebar() {
           <Settings className="w-4 h-4" />
           Settings
         </NavLink>
-        <div className="mt-3 flex items-center gap-3 px-3 py-2">
-          <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">MC</div>
-          <div className="min-w-0">
-            <p className="text-white text-xs font-semibold truncate">Marcus Chen</p>
-            <p className="text-slate-500 text-xs truncate">HR Manager</p>
+        <div className="mt-3 flex items-center gap-3 px-3 py-2 group">
+          <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
+            {user?.initials ?? 'HR'}
           </div>
+          <div className="min-w-0 flex-1">
+            <p className="text-white text-xs font-semibold truncate">{user?.name ?? 'HR User'}</p>
+            <p className="text-slate-500 text-xs truncate">{user?.role ?? ''}</p>
+          </div>
+          <button
+            onClick={logout}
+            title="Sign out"
+            className="opacity-0 group-hover:opacity-100 transition-opacity p-1.5 text-slate-500 hover:text-red-400 hover:bg-slate-800 rounded-lg"
+          >
+            <LogOut className="w-3.5 h-3.5" />
+          </button>
         </div>
       </div>
     </aside>

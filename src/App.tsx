@@ -1,4 +1,6 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { AuthProvider, useAuth } from '@/contexts/AuthContext';
+import { Login } from '@/pages/Login';
 import { Sidebar } from '@/components/layout/Sidebar';
 import { Dashboard } from '@/pages/Dashboard';
 import { Employees } from '@/pages/Employees';
@@ -9,28 +11,39 @@ import { Benefits } from '@/pages/Benefits';
 import { Documents } from '@/pages/Documents';
 import { Payroll } from '@/pages/Payroll';
 import { Reports } from '@/pages/Reports';
+import { Recruitment } from '@/pages/Recruitment';
 
-function App() {
+function AppShell() {
+  const { user } = useAuth();
+
+  if (!user) {
+    return (
+      <Routes>
+        <Route path="*" element={<Login />} />
+      </Routes>
+    );
+  }
+
   return (
-    <BrowserRouter>
-      <div className="flex h-screen overflow-hidden bg-slate-50">
-        <Sidebar />
-        <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
-          <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/employees" element={<Employees />} />
-            <Route path="/leave" element={<Leave />} />
-            <Route path="/performance" element={<Performance />} />
-            <Route path="/training" element={<Training />} />
-            <Route path="/benefits" element={<Benefits />} />
-            <Route path="/documents" element={<Documents />} />
-            <Route path="/payroll" element={<Payroll />} />
-            <Route path="/reports" element={<Reports />} />
-            <Route path="/settings" element={<SettingsPage />} />
-          </Routes>
-        </div>
+    <div className="flex h-screen overflow-hidden bg-slate-50">
+      <Sidebar />
+      <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/employees" element={<Employees />} />
+          <Route path="/recruitment" element={<Recruitment />} />
+          <Route path="/leave" element={<Leave />} />
+          <Route path="/performance" element={<Performance />} />
+          <Route path="/training" element={<Training />} />
+          <Route path="/benefits" element={<Benefits />} />
+          <Route path="/documents" element={<Documents />} />
+          <Route path="/payroll" element={<Payroll />} />
+          <Route path="/reports" element={<Reports />} />
+          <Route path="/settings" element={<SettingsPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
       </div>
-    </BrowserRouter>
+    </div>
   );
 }
 
@@ -45,6 +58,16 @@ function SettingsPage() {
         <p className="text-slate-500 mt-2 text-sm">System configuration and integrations will appear here.</p>
       </div>
     </div>
+  );
+}
+
+function App() {
+  return (
+    <AuthProvider>
+      <BrowserRouter>
+        <AppShell />
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 

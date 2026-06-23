@@ -127,6 +127,84 @@ export interface Document {
   isCompanyWide: boolean;
 }
 
+// ─── Recruitment / ATS ───────────────────────────────────────────────────────
+export type JobStatus = 'Draft' | 'Open' | 'Paused' | 'Closed' | 'Filled';
+export type JobType = 'Full-time' | 'Part-time' | 'Contract' | 'Internship' | 'Remote';
+export type ApplicationStage =
+  | 'Applied'
+  | 'Screening'
+  | 'Phone Interview'
+  | 'Technical Interview'
+  | 'Final Interview'
+  | 'Offer'
+  | 'Hired'
+  | 'Rejected'
+  | 'Withdrawn';
+
+export type ApplicationStatus = 'Active' | 'Hired' | 'Rejected' | 'Withdrawn';
+
+export interface JobBoard {
+  id: string;
+  name: string;
+  logo: string;
+  color: string;
+  posted: boolean;
+  postedOn?: string;
+  applications?: number;
+  free: boolean;
+}
+
+export interface JobOpening {
+  id: string;
+  title: string;
+  department: Department;
+  location: string;
+  type: JobType;
+  status: JobStatus;
+  postedOn: string;
+  closingDate: string;
+  hiringManagerId: string;
+  description: string;
+  requirements: string[];
+  salaryMin: number;
+  salaryMax: number;
+  applicantCount: number;
+  boards: JobBoard[];
+}
+
+export interface ResumeScore {
+  overall: number;
+  skills: number;
+  experience: number;
+  education: number;
+  keywords: string[];
+  missingKeywords: string[];
+  summary: string;
+}
+
+export interface Applicant {
+  id: string;
+  jobId: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  location: string;
+  appliedOn: string;
+  stage: ApplicationStage;
+  status: ApplicationStatus;
+  source: string;
+  resumeScore: ResumeScore;
+  experience: string;
+  education: string;
+  skills: string[];
+  linkedIn?: string;
+  portfolio?: string;
+  notes: string;
+  interviewDate?: string;
+  rating?: 1 | 2 | 3 | 4 | 5;
+}
+
 // ─── Payroll ─────────────────────────────────────────────────────────────────
 export type PayrollStatus = 'Draft' | 'Processing' | 'Completed' | 'Failed';
 

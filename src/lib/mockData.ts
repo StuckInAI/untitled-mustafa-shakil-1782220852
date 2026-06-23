@@ -1,7 +1,7 @@
 import type {
   Employee, LeaveRequest, PerformanceReview, Goal,
   Course, Enrollment, BenefitPlan, BenefitEnrollment,
-  Document, PayrollRun, Payslip
+  Document, PayrollRun, Payslip, JobOpening, Applicant
 } from '@/types';
 
 // ─── Employees ───────────────────────────────────────────────────────────────
@@ -135,7 +135,210 @@ export const payslips: Payslip[] = [
   },
 ];
 
+// ─── Recruitment ─────────────────────────────────────────────────────────────
+export const jobOpenings: JobOpening[] = [
+  {
+    id: 'j1', title: 'Senior Frontend Engineer', department: 'Engineering',
+    location: 'New York, NY / Remote', type: 'Full-time', status: 'Open',
+    postedOn: '2025-01-10', closingDate: '2025-03-10', hiringManagerId: 'e1',
+    description: 'We are looking for a Senior Frontend Engineer to join our growing engineering team. You will lead the development of our customer-facing React applications.',
+    requirements: ['5+ years React experience', 'TypeScript proficiency', 'GraphQL knowledge', 'Team leadership experience'],
+    salaryMin: 130000, salaryMax: 160000, applicantCount: 47,
+    boards: [
+      { id: 'jb1', name: 'LinkedIn', logo: '🔗', color: '#0077B5', posted: true, postedOn: '2025-01-10', applications: 28, free: true },
+      { id: 'jb2', name: 'Indeed', logo: '🔍', color: '#003A9B', posted: true, postedOn: '2025-01-10', applications: 12, free: true },
+      { id: 'jb3', name: 'Glassdoor', logo: '🪟', color: '#0CAA41', posted: true, postedOn: '2025-01-11', applications: 5, free: true },
+      { id: 'jb4', name: 'ZipRecruiter', logo: '⚡', color: '#FF6B35', posted: false, applications: 0, free: true },
+      { id: 'jb5', name: 'We Work Remotely', logo: '🌐', color: '#1D9BF0', posted: true, postedOn: '2025-01-12', applications: 2, free: true },
+      { id: 'jb6', name: 'Wellfound', logo: '🚀', color: '#FB5607', posted: false, applications: 0, free: true },
+    ]
+  },
+  {
+    id: 'j2', title: 'Product Designer', department: 'Product',
+    location: 'San Francisco, CA', type: 'Full-time', status: 'Open',
+    postedOn: '2025-01-15', closingDate: '2025-03-01', hiringManagerId: 'e3',
+    description: 'Join our product team as a Product Designer to craft intuitive user experiences for our enterprise SaaS platform.',
+    requirements: ['3+ years UX/UI design', 'Figma expertise', 'Design systems experience', 'User research skills'],
+    salaryMin: 105000, salaryMax: 130000, applicantCount: 31,
+    boards: [
+      { id: 'jb1', name: 'LinkedIn', logo: '🔗', color: '#0077B5', posted: true, postedOn: '2025-01-15', applications: 18, free: true },
+      { id: 'jb2', name: 'Indeed', logo: '🔍', color: '#003A9B', posted: true, postedOn: '2025-01-15', applications: 8, free: true },
+      { id: 'jb3', name: 'Glassdoor', logo: '🪟', color: '#0CAA41', posted: false, applications: 0, free: true },
+      { id: 'jb4', name: 'ZipRecruiter', logo: '⚡', color: '#FF6B35', posted: true, postedOn: '2025-01-16', applications: 5, free: true },
+      { id: 'jb5', name: 'We Work Remotely', logo: '🌐', color: '#1D9BF0', posted: false, applications: 0, free: true },
+      { id: 'jb6', name: 'Wellfound', logo: '🚀', color: '#FB5607', posted: false, applications: 0, free: true },
+    ]
+  },
+  {
+    id: 'j3', title: 'Sales Development Representative', department: 'Sales',
+    location: 'Austin, TX', type: 'Full-time', status: 'Open',
+    postedOn: '2025-01-20', closingDate: '2025-02-28', hiringManagerId: 'e4',
+    description: 'We are hiring an SDR to drive top-of-funnel pipeline generation and work closely with our Account Executives.',
+    requirements: ['1-2 years SDR/BDR experience', 'Salesforce CRM', 'Cold calling & email outreach', 'Goal-oriented mindset'],
+    salaryMin: 55000, salaryMax: 75000, applicantCount: 68,
+    boards: [
+      { id: 'jb1', name: 'LinkedIn', logo: '🔗', color: '#0077B5', posted: true, postedOn: '2025-01-20', applications: 42, free: true },
+      { id: 'jb2', name: 'Indeed', logo: '🔍', color: '#003A9B', posted: true, postedOn: '2025-01-20', applications: 20, free: true },
+      { id: 'jb3', name: 'Glassdoor', logo: '🪟', color: '#0CAA41', posted: true, postedOn: '2025-01-21', applications: 6, free: true },
+      { id: 'jb4', name: 'ZipRecruiter', logo: '⚡', color: '#FF6B35', posted: false, applications: 0, free: true },
+      { id: 'jb5', name: 'We Work Remotely', logo: '🌐', color: '#1D9BF0', posted: false, applications: 0, free: true },
+      { id: 'jb6', name: 'Wellfound', logo: '🚀', color: '#FB5607', posted: false, applications: 0, free: true },
+    ]
+  },
+  {
+    id: 'j4', title: 'Data Analyst', department: 'Finance',
+    location: 'Remote', type: 'Full-time', status: 'Paused',
+    postedOn: '2024-12-01', closingDate: '2025-02-01', hiringManagerId: 'e4',
+    description: 'Seeking a Data Analyst to support financial modeling and business intelligence reporting.',
+    requirements: ['SQL proficiency', 'Python or R', 'Tableau / PowerBI', 'Finance background preferred'],
+    salaryMin: 85000, salaryMax: 105000, applicantCount: 22,
+    boards: [
+      { id: 'jb1', name: 'LinkedIn', logo: '🔗', color: '#0077B5', posted: false, applications: 14, free: true },
+      { id: 'jb2', name: 'Indeed', logo: '🔍', color: '#003A9B', posted: false, applications: 8, free: true },
+      { id: 'jb3', name: 'Glassdoor', logo: '🪟', color: '#0CAA41', posted: false, applications: 0, free: true },
+      { id: 'jb4', name: 'ZipRecruiter', logo: '⚡', color: '#FF6B35', posted: false, applications: 0, free: true },
+      { id: 'jb5', name: 'We Work Remotely', logo: '🌐', color: '#1D9BF0', posted: false, applications: 0, free: true },
+      { id: 'jb6', name: 'Wellfound', logo: '🚀', color: '#FB5607', posted: false, applications: 0, free: true },
+    ]
+  },
+  {
+    id: 'j5', title: 'Marketing Content Specialist', department: 'Marketing',
+    location: 'Chicago, IL / Hybrid', type: 'Full-time', status: 'Filled',
+    postedOn: '2024-11-01', closingDate: '2024-12-31', hiringManagerId: 'e5',
+    description: 'Content specialist to own blog, social media, and email marketing programs.',
+    requirements: ['3+ years content marketing', 'SEO expertise', 'HubSpot experience', 'Copywriting skills'],
+    salaryMin: 70000, salaryMax: 90000, applicantCount: 55,
+    boards: [
+      { id: 'jb1', name: 'LinkedIn', logo: '🔗', color: '#0077B5', posted: false, applications: 32, free: true },
+      { id: 'jb2', name: 'Indeed', logo: '🔍', color: '#003A9B', posted: false, applications: 18, free: true },
+      { id: 'jb3', name: 'Glassdoor', logo: '🪟', color: '#0CAA41', posted: false, applications: 5, free: true },
+      { id: 'jb4', name: 'ZipRecruiter', logo: '⚡', color: '#FF6B35', posted: false, applications: 0, free: true },
+      { id: 'jb5', name: 'We Work Remotely', logo: '🌐', color: '#1D9BF0', posted: false, applications: 0, free: true },
+      { id: 'jb6', name: 'Wellfound', logo: '🚀', color: '#FB5607', posted: false, applications: 0, free: true },
+    ]
+  },
+];
+
+export const applicants: Applicant[] = [
+  {
+    id: 'a1', jobId: 'j1', firstName: 'Lena', lastName: 'Park', email: 'lena.park@email.com',
+    phone: '(555) 231-4455', location: 'Brooklyn, NY', appliedOn: '2025-01-12',
+    stage: 'Final Interview', status: 'Active', source: 'LinkedIn',
+    resumeScore: { overall: 91, skills: 95, experience: 88, education: 90,
+      keywords: ['React', 'TypeScript', 'GraphQL', 'Team Lead', 'CI/CD'],
+      missingKeywords: ['AWS'], summary: 'Excellent match. Strong React/TS experience with team lead background.' },
+    experience: '6 years', education: 'BS Computer Science, NYU',
+    skills: ['React', 'TypeScript', 'GraphQL', 'Node.js', 'CSS-in-JS', 'Team Leadership'],
+    linkedIn: 'linkedin.com/in/lena-park', notes: 'Top candidate. Very strong cultural fit.', rating: 5,
+    interviewDate: '2025-02-05',
+  },
+  {
+    id: 'a2', jobId: 'j1', firstName: 'Marco', lastName: 'Delgado', email: 'marco.d@email.com',
+    phone: '(555) 342-5566', location: 'Austin, TX', appliedOn: '2025-01-13',
+    stage: 'Technical Interview', status: 'Active', source: 'Indeed',
+    resumeScore: { overall: 78, skills: 82, experience: 75, education: 77,
+      keywords: ['React', 'JavaScript', 'Node.js', 'REST API'],
+      missingKeywords: ['TypeScript', 'GraphQL', 'Leadership'], summary: 'Good frontend skills but lacks TypeScript and leadership experience.' },
+    experience: '4 years', education: 'BS Information Technology, UT Austin',
+    skills: ['React', 'JavaScript', 'Node.js', 'Vue.js', 'REST APIs'],
+    notes: 'Good technical skills. Needs TypeScript coaching.', rating: 3,
+    interviewDate: '2025-01-30',
+  },
+  {
+    id: 'a3', jobId: 'j1', firstName: 'Yuki', lastName: 'Tanaka', email: 'yuki.tanaka@email.com',
+    phone: '(555) 453-6677', location: 'Remote (Seattle, WA)', appliedOn: '2025-01-14',
+    stage: 'Phone Interview', status: 'Active', source: 'Glassdoor',
+    resumeScore: { overall: 85, skills: 88, experience: 84, education: 83,
+      keywords: ['React', 'TypeScript', 'GraphQL', 'Redux'],
+      missingKeywords: ['Leadership'], summary: 'Strong technical profile. Good TypeScript and GraphQL experience.' },
+    experience: '5 years', education: 'MS Computer Science, UW',
+    skills: ['React', 'TypeScript', 'GraphQL', 'Redux', 'Next.js'],
+    linkedIn: 'linkedin.com/in/yuki-tanaka', portfolio: 'yukidev.com', notes: 'Very impressive portfolio.', rating: 4,
+  },
+  {
+    id: 'a4', jobId: 'j1', firstName: 'Brandon', lastName: 'Cole', email: 'b.cole@email.com',
+    phone: '(555) 564-7788', location: 'Chicago, IL', appliedOn: '2025-01-15',
+    stage: 'Screening', status: 'Active', source: 'LinkedIn',
+    resumeScore: { overall: 62, skills: 65, experience: 58, education: 63,
+      keywords: ['React', 'JavaScript'],
+      missingKeywords: ['TypeScript', 'GraphQL', 'Leadership', 'CI/CD', 'Testing'], summary: 'Mid-level experience. Missing several key technical requirements.' },
+    experience: '3 years', education: 'Bootcamp Graduate, General Assembly',
+    skills: ['React', 'JavaScript', 'HTML/CSS', 'Bootstrap'],
+    notes: 'Enthusiastic but under-qualified for senior role.', rating: 2,
+  },
+  {
+    id: 'a5', jobId: 'j1', firstName: 'Olivia', lastName: 'Grant', email: 'o.grant@email.com',
+    phone: '(555) 675-8899', location: 'New York, NY', appliedOn: '2025-01-16',
+    stage: 'Rejected', status: 'Rejected', source: 'Indeed',
+    resumeScore: { overall: 45, skills: 40, experience: 48, education: 47,
+      keywords: ['JavaScript'],
+      missingKeywords: ['React', 'TypeScript', 'GraphQL', 'Leadership', 'Testing', 'CI/CD'], summary: 'Does not meet minimum requirements for a senior frontend role.' },
+    experience: '2 years', education: 'BA Liberal Arts, Columbia',
+    skills: ['HTML', 'CSS', 'JavaScript', 'WordPress'],
+    notes: 'Not a fit for senior role. May revisit for junior opening.',
+  },
+  {
+    id: 'a6', jobId: 'j1', firstName: 'Daniel', lastName: 'Ortiz', email: 'd.ortiz@email.com',
+    phone: '(555) 786-9900', location: 'Miami, FL', appliedOn: '2025-01-17',
+    stage: 'Offer', status: 'Active', source: 'We Work Remotely',
+    resumeScore: { overall: 88, skills: 90, experience: 87, education: 87,
+      keywords: ['React', 'TypeScript', 'GraphQL', 'Team Lead', 'Testing', 'CI/CD'],
+      missingKeywords: [], summary: 'Excellent all-around profile. Meets all requirements.' },
+    experience: '7 years', education: 'BS Computer Engineering, FIU',
+    skills: ['React', 'TypeScript', 'GraphQL', 'Node.js', 'AWS', 'CI/CD', 'Team Leadership'],
+    linkedIn: 'linkedin.com/in/daniel-ortiz-dev', notes: 'Offer sent on 2025-02-01. Awaiting response.', rating: 5,
+    interviewDate: '2025-01-28',
+  },
+  {
+    id: 'a7', jobId: 'j2', firstName: 'Mia', lastName: 'Chen', email: 'mia.chen@email.com',
+    phone: '(555) 111-2233', location: 'San Francisco, CA', appliedOn: '2025-01-16',
+    stage: 'Final Interview', status: 'Active', source: 'LinkedIn',
+    resumeScore: { overall: 94, skills: 96, experience: 93, education: 93,
+      keywords: ['Figma', 'UX Research', 'Design Systems', 'Prototyping', 'A/B Testing'],
+      missingKeywords: [], summary: 'Outstanding designer profile. Perfect match for this role.' },
+    experience: '5 years', education: 'MFA Design, RISD',
+    skills: ['Figma', 'Sketch', 'Adobe XD', 'UX Research', 'Prototyping', 'Design Systems'],
+    linkedIn: 'linkedin.com/in/mia-chen-design', portfolio: 'mia.design', notes: 'Best candidate seen this cycle.', rating: 5,
+    interviewDate: '2025-02-06',
+  },
+  {
+    id: 'a8', jobId: 'j2', firstName: 'Raj', lastName: 'Nair', email: 'raj.nair@email.com',
+    phone: '(555) 222-3344', location: 'Remote', appliedOn: '2025-01-17',
+    stage: 'Technical Interview', status: 'Active', source: 'Indeed',
+    resumeScore: { overall: 74, skills: 78, experience: 72, education: 72,
+      keywords: ['Figma', 'UX Design', 'Prototyping'],
+      missingKeywords: ['Design Systems', 'User Research', 'A/B Testing'], summary: 'Solid junior-to-mid level designer. Lacks design systems expertise.' },
+    experience: '3 years', education: 'BS Graphic Design, Cal Arts',
+    skills: ['Figma', 'Sketch', 'Illustrator', 'Prototyping'],
+    notes: 'Good execution skills, limited research experience.', rating: 3,
+  },
+  {
+    id: 'a9', jobId: 'j3', firstName: 'Tyler', lastName: 'Brooks', email: 'tyler.b@email.com',
+    phone: '(555) 333-4455', location: 'Austin, TX', appliedOn: '2025-01-21',
+    stage: 'Phone Interview', status: 'Active', source: 'LinkedIn',
+    resumeScore: { overall: 82, skills: 85, experience: 80, education: 81,
+      keywords: ['Salesforce', 'Cold Calling', 'Pipeline Generation', 'SaaS'],
+      missingKeywords: ['HubSpot'], summary: 'Strong SDR background with proven pipeline metrics.' },
+    experience: '2 years', education: 'BA Business, UT Austin',
+    skills: ['Salesforce', 'Outreach', 'Cold Calling', 'Email Sequences', 'SaaS Sales'],
+    notes: 'Very energetic on screening call. Strong numbers.', rating: 4,
+  },
+  {
+    id: 'a10', jobId: 'j3', firstName: 'Jasmine', lastName: 'Wu', email: 'jasmine.wu@email.com',
+    phone: '(555) 444-5566', location: 'Dallas, TX', appliedOn: '2025-01-22',
+    stage: 'Applied', status: 'Active', source: 'Indeed',
+    resumeScore: { overall: 70, skills: 72, experience: 68, education: 70,
+      keywords: ['CRM', 'Cold Calling', 'B2B Sales'],
+      missingKeywords: ['Salesforce', 'Pipeline Generation', 'SaaS'], summary: 'Entry-level sales experience. Some relevant skills.' },
+    experience: '1 year', education: 'BA Marketing, SMU',
+    skills: ['HubSpot', 'Cold Calling', 'B2B Sales', 'Email Marketing'],
+    notes: 'Review resume in detail before scheduling screen.',
+  },
+];
+
 // ─── Helpers ─────────────────────────────────────────────────────────────────
+export const getJob = (id: string) => jobOpenings.find(j => j.id === id);
+export const getApplicantsForJob = (jobId: string) => applicants.filter(a => a.jobId === jobId);
 export const getEmployee = (id: string) => employees.find(e => e.id === id);
 export const getEmployeeName = (id: string) => {
   const e = getEmployee(id);
