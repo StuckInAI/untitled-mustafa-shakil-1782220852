@@ -2,17 +2,14 @@ import { NavLink } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { useAuth } from '@/contexts/AuthContext';
 import {
-  LayoutDashboard, Users, CalendarDays, TrendingUp,
+  LayoutDashboard, Users,
   GraduationCap, Shield, FileText, DollarSign,
-  BarChart3, Settings, ChevronRight, UserSearch, LogOut
+  BarChart3, Settings, ChevronRight, LogOut
 } from 'lucide-react';
 
 const nav = [
   { label: 'Dashboard', to: '/', icon: LayoutDashboard },
   { label: 'Employees', to: '/employees', icon: Users },
-  { label: 'Recruitment', to: '/recruitment', icon: UserSearch },
-  { label: 'Leave', to: '/leave', icon: CalendarDays },
-  { label: 'Performance', to: '/performance', icon: TrendingUp },
   { label: 'Training', to: '/training', icon: GraduationCap },
   { label: 'Benefits', to: '/benefits', icon: Shield },
   { label: 'Documents', to: '/documents', icon: FileText },
@@ -24,7 +21,6 @@ export function Sidebar() {
   const { user, logout } = useAuth();
   return (
     <aside className="w-64 min-h-screen bg-slate-900 flex flex-col flex-shrink-0">
-      {/* Logo */}
       <div className="px-5 py-5 border-b border-slate-700/50">
         <div className="flex items-center gap-3">
           <div className="w-9 h-9 bg-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -37,7 +33,6 @@ export function Sidebar() {
         </div>
       </div>
 
-      {/* Nav */}
       <nav className="flex-1 px-3 py-4 space-y-0.5 overflow-y-auto">
         {nav.map(({ label, to, icon: Icon }) => (
           <NavLink
@@ -64,7 +59,6 @@ export function Sidebar() {
         ))}
       </nav>
 
-      {/* Footer */}
       <div className="px-3 py-3 border-t border-slate-700/50">
         <NavLink
           to="/settings"
